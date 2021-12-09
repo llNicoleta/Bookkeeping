@@ -1,0 +1,9 @@
+@import "src/styles";
+
+.icon-hover {
+  @apply hover:text-secondary cursor-pointer
+}
+
+.label {
+  @apply text-gray-800 font-extralight leading-none
+}

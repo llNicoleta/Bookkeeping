@@ -1,0 +1,10 @@
+@import "src/assets/styles/mixins";
+
+table {
+  width: min-content;
+  inline-size: 50%;
+
+  .mat-column-code, .mat-column-name {
+    padding: 0 1rem;
+  }
+}
