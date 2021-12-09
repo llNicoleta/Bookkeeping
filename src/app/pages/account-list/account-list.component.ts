@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {Account} from "../../models/account.model";
 import {AccountService} from "../../services/account.service";
+import {MatDialog} from "@angular/material/dialog";
+import {AccountDetailsComponent} from "./account-details/account-details.component";
 
 @Component({
   selector: 'app-account-list',
@@ -17,12 +19,13 @@ export class AccountListComponent implements OnInit {
     'actions'
   ]
 
-  constructor(private accountsService: AccountService) { }
+  constructor(private accountsService: AccountService, private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.allAccounts$ = this.accountsService.allAccounts$;
   }
 
   openDetails(row: Account) {
+    this.matDialog.open(AccountDetailsComponent, {data: row});
   }
 }
