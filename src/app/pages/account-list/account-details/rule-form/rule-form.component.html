@@ -1,0 +1,35 @@
+<div class="pop-up">
+  <div class="flex flex-row justify-between items-center">
+    <h1 class="text-lg">{{data.title}}</h1>
+    <div class="self-center">
+      <p mat-dialog-close="">
+        <mat-icon class="icon-hover">close</mat-icon>
+      </p>
+    </div>
+  </div>
+  <mat-divider class="py-2"></mat-divider>
+      <form [formGroup]="ruleForm" (ngSubmit)="submitRule()">
+        <div class="grid grid-cols-2 gap-10">
+      <mat-form-field appearance="outline">
+        <mat-label>Code 1</mat-label>
+        <input type="number" matInput formControlName="code1">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Code 2</mat-label>
+        <input type="number" matInput formControlName="code2">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Action</mat-label>
+        <mat-select formControlName="action">
+          <mat-option value="credit">Credit</mat-option>
+          <mat-option value="debit">Debit</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Rule</mat-label>
+        <input type="text" matInput formControlName="rule">
+      </mat-form-field>
+        </div>
+      <button class="button" type="submit" [disabled]="ruleForm.invalid">Submit</button>
+    </form>
+</div>

@@ -13,12 +13,18 @@ import { AccountDetailsComponent } from './pages/account-list/account-details/ac
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import { RuleFormComponent } from './pages/account-list/account-details/rule-form/rule-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountListComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    RuleFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +37,10 @@ import {MatDividerModule} from "@angular/material/divider";
     MatDialogModule,
     MatButtonModule,
     MatDividerModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,9 @@ module.exports = {
   ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
+    container: {
+      center: true,
+    },
     colors: {
       primary: '#00a8e8',
       secondary: '#1985a1',
@@ -19,7 +22,12 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['responsive', 'hover', 'focus', 'active', 'disabled'],
+      cursor: [
+        "disabled"
+      ]
+    }
   },
   plugins: [],
 }

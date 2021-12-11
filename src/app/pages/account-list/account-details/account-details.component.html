@@ -1,7 +1,7 @@
-<div class="relative min-w-100">
+<div class="pop-up">
   <div class="flex flex-row justify-between items-center">
     <h1 class="text-lg">Details</h1>
-    <div class="absolute right-0 top-0">
+    <div class="self-center">
       <p mat-dialog-close="">
         <mat-icon class="icon-hover">close</mat-icon>
       </p>
@@ -18,4 +18,16 @@
       <h3 class="leading-tight">{{data.name}}</h3>
     </div>
   </div>
+  <mat-divider class="py-2"></mat-divider>
+  <div class="flex flex-row justify-between items-start mb-4">
+    <h1 class="text-lg">Transaction Rules</h1>
+    <button type="button" mat-flat-button class="button" (click)="openAddForm()">Add rule</button>
+  </div>
+  <div class="scale-100" *ngIf="transactionRules.length > 0; else notFound">
+    <div *ngFor="let rule of transactionRules">
+    </div>
+  </div>
+  <ng-template #notFound>
+    <h3>No transactions available for the account</h3>
+  </ng-template>
 </div>
