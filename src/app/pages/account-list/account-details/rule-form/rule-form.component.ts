@@ -10,8 +10,8 @@ import {FormBuilder, Validators} from "@angular/forms";
 })
 export class RuleFormComponent implements OnInit {
   ruleForm = this.fb.group({
-    code1: [this.data.initial.code1, Validators.required],
-    code2: [this.data.initial.code2, Validators.required],
+    code1: [{value: this.data.initial.code1, disabled: true}],
+    code2: [{value: this.data.initial.code2, disabled: this.data.edit}, Validators.required],
     action: [this.data.initial.action, Validators.required],
     rule: [this.data.initial.rule, Validators.required],
   },);
@@ -22,9 +22,14 @@ export class RuleFormComponent implements OnInit {
   }
 
   submitRule() {
-    const rule = this.ruleForm.value;
+    const rule = this.ruleForm.getRawValue();
     this.ruleService.setRuleForAccount(rule);
     this.dialogRef.close();
   }
 
+  updateRule() {
+    const rule = this.ruleForm.getRawValue();
+    this.ruleService.updateRuleForAccount(rule);
+    this.dialogRef.close();
+  }
 }

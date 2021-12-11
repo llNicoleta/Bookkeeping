@@ -1,0 +1,16 @@
+<div class="flex flex-row justify-between items-center">
+  <div class="data flex flex-row gap-2">
+    <p class="label">Account</p>
+    <p class="leading-none font-bold"> {{rule.code1}} </p>
+    <p class="label"> can </p>
+    <p class="leading-none font-bold"> {{rule.action | uppercase}} </p>
+    <p class="label"> account </p>
+    <p class="leading-none font-bold"> {{rule.code2}} </p>
+    <p class="label"> when </p>
+    <p class="leading-none font-bold"> {{rule.rule | lowercase}}</p>
+  </div>
+  <div class="actions data flex flex-row gap-2">
+    <mat-icon class="icon-hover" (click)="emitEdit()">edit</mat-icon>
+    <mat-icon class="icon-hover" (click)="emitDelete()">delete</mat-icon>
+  </div>
+</div>

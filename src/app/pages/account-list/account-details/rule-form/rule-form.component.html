@@ -8,7 +8,7 @@
     </div>
   </div>
   <mat-divider class="py-2"></mat-divider>
-      <form [formGroup]="ruleForm" (ngSubmit)="submitRule()">
+      <form [formGroup]="ruleForm" (ngSubmit)="data['edit'] ? updateRule() : submitRule()">
         <div class="grid grid-cols-2 gap-10">
       <mat-form-field appearance="outline">
         <mat-label>Code 1</mat-label>

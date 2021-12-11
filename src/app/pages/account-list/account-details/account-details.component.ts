@@ -31,12 +31,32 @@ export class AccountDetailsComponent implements OnInit {
     const dialogRef = this.matDialog.open(RuleFormComponent, {
         data: {
           initial: {code1: this.data.code, code2: '', action: null, rule: ''},
-          title: 'Add transaction rule'
+          title: 'Add transaction rule',
+          edit: false,
         }
       }
     );
     dialogRef.afterClosed().subscribe(() => {
       this.getRulesForAccount();
     });
+  }
+
+  openEditForm(rule: TransactionRule) {
+    const dialogRef = this.matDialog.open(RuleFormComponent, {
+        data: {
+          initial: {...rule},
+          title: 'Edit transaction rule',
+          edit: true,
+        }
+      }
+    );
+    dialogRef.afterClosed().subscribe(() => {
+      this.getRulesForAccount();
+    });
+  }
+
+  deleteRule(rule: TransactionRule) {
+    this.ruleService.deleteRule(rule);
+    this.getRulesForAccount();
   }
 }

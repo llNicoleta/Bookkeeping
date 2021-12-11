@@ -18,6 +18,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import { RuleFormComponent } from './pages/account-list/account-details/rule-form/rule-form.component';
+import {RuleComponent} from "./pages/account-list/account-details/rule/rule.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RuleFormComponent } from './pages/account-list/account-details/rule-for
     AccountListComponent,
     AccountDetailsComponent,
     RuleFormComponent,
+    RuleComponent,
   ],
   imports: [
     BrowserModule,

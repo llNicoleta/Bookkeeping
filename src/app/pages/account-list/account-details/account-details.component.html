@@ -25,6 +25,7 @@
   </div>
   <div class="scale-100" *ngIf="transactionRules.length > 0; else notFound">
     <div *ngFor="let rule of transactionRules">
+      <app-rule [rule]="rule" (editEmitter)="openEditForm($event)" (deleteEmitter)="deleteRule($event)"></app-rule>
     </div>
   </div>
   <ng-template #notFound>

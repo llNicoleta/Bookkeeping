@@ -14,21 +14,39 @@ export class TransactionRuleService {
   }
 
   getRulesForAccount(code: number): Array<TransactionRule> {
-    const rulesLocal = this.getRules();
-    const rules = this.parseRules(rulesLocal);
+    const rules = this.parseRules();
     return rules.filter(rule => rule.code1 === code);
   }
 
-  private parseRules(rulesLocal: string | null): Array<TransactionRule> {
+  private parseRules(): Array<TransactionRule> {
+    const rulesLocal = this.getRules();
     return rulesLocal ? JSON.parse(rulesLocal) : [];
   }
 
   setRuleForAccount(rule: TransactionRule) {
-    const rulesLocal = this.getRules();
-    let currentRules = this.parseRules(rulesLocal);
+    let currentRules = this.parseRules();
     currentRules.push(rule);
     currentRules.push(this.setEquivalentRule(rule));
     localStorage.setItem('rules', JSON.stringify(currentRules));
+  }
+
+  updateRuleForAccount(rule: TransactionRule) {
+    let newRules = this.filterRuleOut(rule);
+    newRules.push(rule);
+    newRules.push(this.setEquivalentRule(rule));
+    localStorage.setItem('rules', JSON.stringify(newRules));
+  }
+
+  private filterRuleOut(rule: TransactionRule): Array<TransactionRule> {
+    let currentRules = this.parseRules();
+    return currentRules
+      .filter(r => !(r.code2 === rule.code1 && r.code1 === rule.code2))
+      .filter(r => !(r.code1 === rule.code1 && r.code2 === rule.code2));
+  }
+
+  deleteRule(rule: TransactionRule) {
+    const newRules = this.filterRuleOut(rule);
+    localStorage.setItem('rules', JSON.stringify(newRules));
   }
 
   private setEquivalentRule(rule: TransactionRule): TransactionRule {
