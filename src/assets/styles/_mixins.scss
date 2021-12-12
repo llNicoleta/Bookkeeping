@@ -16,3 +16,7 @@
   width: 70vw;
   height: 70vh;
 }
+
+.link {
+  @apply no-underline text-white hover:underline cursor-pointer
+}
