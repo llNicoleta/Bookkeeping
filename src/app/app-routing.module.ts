@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: 'account-list', component: AccountListComponent},
   {path: 'checker', component: TransactionCheckerComponent},
   {path: '', redirectTo: 'account-list', pathMatch: 'full'},
+  {path: '**', redirectTo: 'account-list'},
 ];
 
 @NgModule({
