@@ -1,0 +1,15 @@
+@import "src/styles";
+@import "src/assets/styles/mixins";
+
+* {
+  overflow: hidden;
+}
+
+.content {
+  width: 100vw;
+  height: 91.5vh;
+}
+
+.btn {
+  @apply bg-darkBlue text-white hover:bg-white hover:text-primary h-8 rounded-2xl disabled:bg-gray-500 disabled:cursor-not-allowed
+}
