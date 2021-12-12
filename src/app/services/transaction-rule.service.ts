@@ -37,6 +37,12 @@ export class TransactionRuleService {
     localStorage.setItem('rules', JSON.stringify(newRules));
   }
 
+  checkRule(code1: number, code2: number, action: ActionType): TransactionRule | null {
+    let rules = this.parseRules();
+    let rule = rules.find(rule => rule.code1 === code1 && rule.code2 === code2 && rule.action === action);
+    return rule ? rule : null;
+  }
+
   private filterRuleOut(rule: TransactionRule): Array<TransactionRule> {
     let currentRules = this.parseRules();
     return currentRules

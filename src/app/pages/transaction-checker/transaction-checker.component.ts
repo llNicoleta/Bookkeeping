@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {TransactionRuleService} from "../../services/transaction-rule.service";
+import {TransactionRule} from "../../models/transaction-rule.model";
 
 @Component({
   selector: 'app-transaction-checker',
@@ -12,12 +14,19 @@ export class TransactionCheckerComponent implements OnInit {
     code2: ['', Validators.required],
     action: [null, Validators.required]
   })
-  constructor(private fb: FormBuilder) { }
+
+  hasRun: boolean = false;
+  rule!: TransactionRule | null;
+  constructor(private fb: FormBuilder, private ruleService: TransactionRuleService) { }
 
   ngOnInit(): void {
   }
 
   check() {
-
+    let code1 = this.checkForm.value.code1;
+    let code2 = this.checkForm.value.code2;
+    let action = this.checkForm.value.action;
+    this.rule = this.ruleService.checkRule(code1, code2, action);
+    this.hasRun = true;
   }
 }
